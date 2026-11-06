@@ -1,0 +1,198 @@
+
+/* ===================================
+   ONLINESTORE - CONNEXION / INSCRIPTION
+=================================== */
+
+.account-page {
+    min-height: 100vh;
+    margin: 0;
+    padding: 40px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #172033;
+    background: linear-gradient(135deg, #0f172a, #1d4ed8);
+}
+
+.account-card {
+    width: 100%;
+    max-width: 480px;
+    margin: auto;
+    padding: 38px;
+    box-sizing: border-box;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+.account-logo {
+    display: block;
+    margin-bottom: 25px;
+    color: #111827;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    text-decoration: none;
+}
+
+.account-logo span {
+    color: #2563eb;
+}
+
+.account-card h1 {
+    margin: 0 0 10px;
+    color: #111827;
+    text-align: center;
+    font-size: 29px;
+    font-weight: 800;
+}
+
+.account-subtitle {
+    margin: 0 0 28px;
+    color: #6b7280;
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* Espacement des champs */
+
+.account-field {
+    margin-bottom: 20px;
+}
+
+.account-field label {
+    display: block;
+    margin-bottom: 8px;
+    color: #374151;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.account-field input {
+    display: block;
+    width: 100%;
+    height: 48px;
+    padding: 0 14px;
+    box-sizing: border-box;
+    border: 1px solid #d1d5db;
+    border-radius: 9px;
+    background: #f9fafb;
+    color: #111827;
+    font-size: 15px;
+    outline: none;
+    transition: 0.2s ease;
+}
+
+.account-field input:focus {
+    border-color: #2563eb;
+    background: #ffffff;
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.13);
+}
+
+.account-field small {
+    display: block;
+    margin-top: 6px;
+    color: #6b7280;
+    font-size: 12px;
+}
+
+/* Bouton principal */
+
+.account-submit {
+    display: block;
+    width: 100%;
+    min-height: 50px;
+    margin-top: 28px;
+    padding: 13px 18px;
+    border: none;
+    border-radius: 9px;
+    background: #2563eb;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.account-submit:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+/* Messages de confirmation et d'erreur */
+
+.account-alert {
+    margin-bottom: 22px;
+    padding: 14px;
+    border-radius: 9px;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.account-alert-error {
+    border: 1px solid #fecaca;
+    background: #fef2f2;
+    color: #b91c1c;
+}
+
+.account-alert-success {
+    border: 1px solid #bbf7d0;
+    background: #f0fdf4;
+    color: #166534;
+}
+
+/* Liens en bas du formulaire */
+
+.account-switch {
+    margin: 26px 0 18px;
+    color: #6b7280;
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.account-switch a {
+    color: #2563eb;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.account-switch a:hover {
+    text-decoration: underline;
+}
+
+.account-back {
+    display: block;
+    margin-top: 12px;
+    color: #4b5563;
+    text-align: center;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.account-back:hover {
+    color: #2563eb;
+}
+
+/* Affichage sur téléphone */
+
+@media (max-width: 520px) {
+    .account-page {
+        padding: 20px 12px;
+        align-items: flex-start;
+    }
+
+    .account-card {
+        margin: 12px auto;
+        padding: 27px 21px;
+        border-radius: 15px;
+    }
+
+    .account-card h1 {
+        font-size: 25px;
+    }
+}

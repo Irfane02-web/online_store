@@ -1,0 +1,230 @@
+<?php
+// On récupère la connexion à la base de données.
+require_once "includes/db.php";
+
+// On récupère les produits enregistrés dans MySQL.
+$sql = "SELECT * FROM Produit LIMIT 8";
+$resultat = $connexion->query($sql);
+?>
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <!-- Informations sur la page -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Titre affiché dans l'onglet du navigateur -->
+    <title>Online_Store - Boutique électronique</title>
+
+    <!-- Fichier CSS qui gère le design -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- ===================== EN-TÊTE ===================== -->
+    <header>
+
+        <!-- Logo du site -->
+        <div class="logo">
+            <h2>Online_Store</h2>
+        </div>
+
+        <!-- Menu de navigation -->
+        <nav>
+            <ul>
+                <li><a href="index.php">Accueil</a></li>
+                <li><a href="#categories">Catégories</a></li>
+                <li><a href="#produits">Produits</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <!-- Lien vers le futur panier -->
+        <div class="panier">
+            <a href="panier.php">Mon panier</a>
+        </div>
+
+    </header>
+
+
+    <!-- ===================== CONTENU PRINCIPAL ===================== -->
+    <main>
+
+        <!-- Grande bannière de présentation -->
+        <section class="accueil">
+
+            <div class="texte-accueil">
+
+                <h1>Bienvenue chez Online_Store</h1>
+
+                <h2>Tout ton matériel informatique au même endroit</h2>
+
+                <p>
+                    Découvre notre sélection de produits électroniques :
+                    écrans, claviers, souris et unités centrales.
+                </p>
+
+                <!-- Bouton qui mène à la section des produits -->
+                <a href="#produits" class="bouton">
+                    Découvrir nos produits
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- ===================== CATÉGORIES ===================== -->
+        <section id="categories">
+
+            <h2>Nos catégories</h2>
+
+            <p>Choisis le type de matériel qui t'intéresse.</p>
+
+            <div class="categories">
+
+                <!-- Première catégorie -->
+                <article class="categorie">
+                    <h3>Écrans</h3>
+                    <p>Découvre nos écrans informatiques.</p>
+                    <a href="#produits">Voir les produits</a>
+                </article>
+
+                <!-- Deuxième catégorie -->
+                <article class="categorie">
+                    <h3>Claviers</h3>
+                    <p>Des claviers pour travailler ou jouer.</p>
+                    <a href="#produits">Voir les produits</a>
+                </article>
+
+                <!-- Troisième catégorie -->
+                <article class="categorie">
+                    <h3>Souris</h3>
+                    <p>Choisis la souris adaptée à tes besoins.</p>
+                    <a href="#produits">Voir les produits</a>
+                </article>
+
+                <!-- Quatrième catégorie -->
+                <article class="categorie">
+                    <h3>Unités centrales</h3>
+                    <p>Découvre nos ordinateurs de bureau.</p>
+                    <a href="#produits">Voir les produits</a>
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- ===================== PRODUITS ===================== -->
+        <section id="produits">
+
+            <h2>Nos produits</h2>
+
+            <p>Retrouve ici les produits disponibles dans notre boutique.</p>
+
+            <div class="produits">
+
+                <?php
+                // On parcourt les produits récupérés dans la base.
+                while ($produit = $resultat->fetch(PDO::FETCH_ASSOC)) {
+                ?>
+
+                    <!-- Carte HTML représentant un produit -->
+                    <article class="produit">
+
+                        <!-- Nom du produit provenant de MySQL -->
+                        <h3>
+                            <?= htmlspecialchars(
+                                $produit['nom_prouit']
+                            ) ?>
+                        </h3>
+
+                        <!-- Prix du produit -->
+                        <p class="prix">
+                            <?= number_format(
+                                (float) $produit['prix'],
+                                2,
+                                ',',
+                                ' '
+                            ) ?> €
+                        </p>
+
+                        <!-- Quantité disponible en stock -->
+                        <p>
+                            Stock disponible :
+                            <?= (int) $produit['quantité'] ?>
+                        </p>
+
+                        <!-- Lien vers la future fiche produit -->
+                        <a href="produit.php?id=<?= (int) $produit['id_produit'] ?>">
+                            Voir le produit
+                        </a>
+
+                    </article>
+
+                <?php
+                }
+                ?>
+
+            </div>
+
+        </section>
+
+
+        <!-- ===================== PRÉSENTATION ===================== -->
+        <section id="presentation">
+
+            <h2>Pourquoi choisir Online_Store ?</h2>
+
+            <div class="avantages">
+
+                <article>
+                    <h3>Un large choix</h3>
+                    <p>Plusieurs catégories de matériel informatique.</p>
+                </article>
+
+                <article>
+                    <h3>Des prix affichés</h3>
+                    <p>Consulte facilement le prix de chaque produit.</p>
+                </article>
+
+                <article>
+                    <h3>Une boutique simple</h3>
+                    <p>Retrouve facilement les produits qui t'intéressent.</p>
+                </article>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ===================== PIED DE PAGE ===================== -->
+    <footer id="contact">
+
+        <h2>Online_Store</h2>
+
+        <p>Ta boutique de produits électroniques.</p>
+
+        <p>Écrans, claviers, souris et unités centrales.</p>
+
+        <nav>
+            <a href="index.php">Accueil</a>
+            <a href="#categories">Catégories</a>
+            <a href="#produits">Produits</a>
+        </nav>
+
+        <p>
+            &copy; 2026 Online_Store - Tous droits réservés.
+        </p>
+
+    </footer>
+
+</body>
+
+</html>
